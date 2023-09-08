@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepie App</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .card {
+            margin: 8px !important;
+            width: 28rem;
+        }
+        .card img {
+            width: 100%;
+            height: 16rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="showList" class=" m-4 p-3 d-flex justify-content-evenly align-items-centerd">
+            <!-- <input type="file" id="imageUrl"> -->
+            <div class="card">
+                <img id="uploadedImage" src="pasta.jpeg" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Italian Pasta</h5>
+                    <p class="card-text">Pasta MushroomSouce Olive OliveOil Oil Tomato</p>
+                </div>
+                
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="modaldiv">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Recipe +
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="recepieName">Recipe Name : </label>
+                            <input class="my-3" id="recepieName" placeholder="Enter your Recipe Name please"
+                                type="text">
+                            <br>
+                            <label for="recepieTxt">Recepie Components : </label>
+                            <textarea class="my-4" id="recepieTxt"
+                                placeholder="Enter your components & seperate with comma like , & ," name="recepieTxt"
+                                cols="50" rows="8"></textarea>
+                                <br>
+                                <label for="imageUrl">Recipe Image : </label>
+                                <input type="file" id="imageUrl">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" id="ReceAdd" class="btn btn-primary">Create Recipe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
