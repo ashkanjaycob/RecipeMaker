@@ -1,18 +1,5 @@
 const addBtn = document.querySelector("#ReceAdd");
 
-// const uploadImg = document.querySelector('#imageUrl');
-// let showUpload = "";
-
-// uploadImg.addEventListener("change" , function() {
-//   // console.log(uploadImg.value);
-//   let pic = new FileReader();
-//   pic.addEventListener("load" , () => {
-//     showUpload = pic.result ;
-//     document.querySelector('#uploadedImage').setAttribute( 'src' , event.target.result);
-//   })
-//   pic.readAsDataURL(this.files[0]);
-// })
-
 var axs = [];
 var Num = 0;
 
@@ -29,6 +16,8 @@ uploadImg.addEventListener("change", function () {
   pic.readAsDataURL(this.files[0]);
 });
 
+
+// make a full function for create recipes ...
 addBtn.addEventListener("click", () => {
 
   // console.log(axali);
@@ -49,25 +38,42 @@ addBtn.addEventListener("click", () => {
     const H5 = document.createElement("h5");
     H5.classList.add("card-title");
     H5.innerHTML = ReceName.value;
+    DivBody.appendChild(H5);
 
-    const Para = document.createElement("p");
-    Para.classList.add("card-text");
-    Para.innerHTML = ReceText.value;
+
+    const Para = document.createElement("ul");
+    Para.classList.add("list-group");
+    DivBody.appendChild(Para);
+
+
+    function addrain() {
+      let ReceTextMems = ReceText.value.split(" ");
+      for (var i = 0; i < ReceTextMems.length; i++) {
+        // Create DOM element
+        let childNode = document.createElement('li');
+        childNode.classList.add("list-group-item");
+        // Set content to current element
+        childNode.innerHTML = ReceTextMems[i];
+        // Add DOM Node to list
+        Para.appendChild(childNode);
+      }
+    }
+    addrain();
 
     const Image = document.createElement("img");
     Image.classList.add("card-img-top");
     Image.id = "ImageCraeted";
     Image.src = axs[Num];
 
-    DivBody.appendChild(H5);
-    DivBody.appendChild(Para);
+
     DIV.appendChild(Image);
 
-    console.log(DIV);
+    // console.log(DIV);
     DIV.appendChild(DivBody);
 
     const list = document.querySelector("#showList");
     list.appendChild(DIV);
+
 
     ReceName.value = "";
     ReceText.value = "";
@@ -77,3 +83,25 @@ addBtn.addEventListener("click", () => {
   }
   Num++;
 });
+
+console.log(list);
+
+
+
+
+// Image uploader source Code Start....
+
+// const uploadImg = document.querySelector('#imageUrl');
+// let showUpload = "";
+
+// uploadImg.addEventListener("change" , function() {
+//   // console.log(uploadImg.value);
+//   let pic = new FileReader();
+//   pic.addEventListener("load" , () => {
+//     showUpload = pic.result ;
+//     document.querySelector('#uploadedImage').setAttribute( 'src' , event.target.result);
+//   })
+//   pic.readAsDataURL(this.files[0]);
+// })
+
+// Image uploader source Code End ...
