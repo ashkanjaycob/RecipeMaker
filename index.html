@@ -8,87 +8,118 @@
     <title>Recepie App</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <style>
+        main {
+            /* overflow-y: hidden; */
+            overflow-x: hidden;
+        }
+
         .card {
             margin: 12px !important;
-            width: 28rem;
+            min-width: 24rem;
         }
+
         .card img {
             width: 100%;
             height: 16rem;
+        }
+
+        .badge {
+            margin: 0 20px;
+            width: 25%;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
-
     <div class="container">
-
-        <div id="showList" class=" m-4 p-3">
-            <!-- <input type="file" id="imageUrl"> -->
-            <div class="card">
-                <img id="uploadedImage" src="pasta.jpeg" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Italian Pasta</h5>
-                    <!-- <hr> -->
-                    <ul class="list-group" id="list-group">
-                        <li class="list-group-item">Pasta</li>
-                        <li class="list-group-item">MushroomSouce</li>
-                        <li class="list-group-item">Olive</li>
-                        <li class="list-group-item">Oil</li>
-                        <li class="list-group-item">Tomato</li>
-                      </ul>
-                    <p class="card-text"></p>
-                </div>
-                
-            </div>
-
-
-        </div>
-
-
-
-
-        <div class="modaldiv">
+        <div class="text-center">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary px-3" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
                 Recipe +
             </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" id="loaderbtn" class="btn btn-dark m-5">
+                Load All Recipes
+            </button>
+        </div>
+    </div>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div id="showList" class="d-flex p-3">
+                    <!-- <input type="file" id="imageUrl"> -->
+                    <div class="card">
+                        <img id="uploadedImage" src="pasta.jpeg" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Italian Pasta</h5>
+
+                            <!-- <hr> -->
+                            <ul class="list-group" id="list-group">
+                                <li class="list-group-item">Pasta</li>
+                                <li class="list-group-item">MushroomSouce</li>
+                                <li class="list-group-item">Olive</li>
+                                <li class="list-group-item">Oil</li>
+                                <li class="list-group-item">Tomato</li>
+                            </ul>
+                            <!-- <p class="card-text"></p> -->
+                            <h4 class="badge text-bg-danger">Delete</h4>
+                            <h4 class="badge text-bg-info">Edit</h4>
                         </div>
-                        <div class="modal-body">
-                            <label for="recepieName">Recipe Name : </label>
-                            <input class="my-3 w-75" id="recepieName" placeholder="Enter your Recipe Name please"
-                                type="text">
-                            <br>
-                            <label for="recepieTxt">Recepie Components : </label>
-                            <textarea class="my-4 w-100" id="recepieTxt"
-                                placeholder="Enter your components & seperate with space. Example Tomato Olive Brocley &..." name="recepieTxt"
-                                cols="50" rows="8"></textarea>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="modaldiv">
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="recepieName">Recipe Name : </label>
+                                <input class="my-3 w-75" id="recepieName" placeholder="Enter your Recipe Name please"
+                                    type="text">
+                                <br>
+                                <label for="recepieTxt">Recepie Components : </label>
+                                <textarea class="my-4 w-100" id="recepieTxt"
+                                    placeholder="Enter your components & seperate with space. Example Tomato Olive Brocley &..."
+                                    name="recepieTxt" cols="50" rows="8"></textarea>
                                 <br>
                                 <label for="imageUrl">Recipe Image : </label>
                                 <input type="file" id="imageUrl">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" id="ReceAdd" class="btn btn-primary">Create Recipe</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" id="ReceAdd" class="btn btn-primary">Create Recipe</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
 
+    </main>
+    <script>
+        const scrollContainer = document.querySelector("main");
+        scrollContainer.addEventListener("wheel", (evt) => {
+            evt.preventDefault();
+            scrollContainer.scrollLeft += evt.deltaY;
+        });
 
-    </div>
-
-
+    </script>
     <script src="script.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>

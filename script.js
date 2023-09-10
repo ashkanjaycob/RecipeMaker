@@ -1,7 +1,7 @@
 const addBtn = document.querySelector("#ReceAdd");
-
 var axs = [];
 var Num = 0;
+
 
 const uploadImg = document.querySelector("#imageUrl");
 let showUpload = "";
@@ -17,9 +17,17 @@ uploadImg.addEventListener("change", function () {
 });
 
 
+// make a local storage  on your browser to save data 
+function SaveData() {
+  localStorage.setItem("data", list.innerHTML);
+}
+
+
+list = document.querySelector("#showList");
+
+
 // make a full function for create recipes ...
 addBtn.addEventListener("click", () => {
-
   // console.log(axali);
   const ReceName = document.querySelector("#recepieName");
   const ReceText = document.querySelector("#recepieTxt");
@@ -44,6 +52,18 @@ addBtn.addEventListener("click", () => {
     const Para = document.createElement("ul");
     Para.classList.add("list-group");
     DivBody.appendChild(Para);
+
+    const Delete = document.createElement("h4");
+    Delete.classList.add("badge");
+    Delete.classList.add("text-bg-danger");
+    Delete.innerHTML = "Delete";
+    DivBody.appendChild(Delete);
+
+    const EditBtn = document.createElement("h4");
+    EditBtn.classList.add("badge");
+    EditBtn.classList.add("text-bg-info");
+    EditBtn.innerHTML = "Edit";
+    DivBody.appendChild(EditBtn);
 
 
     function addrain() {
@@ -71,20 +91,44 @@ addBtn.addEventListener("click", () => {
     // console.log(DIV);
     DIV.appendChild(DivBody);
 
-    const list = document.querySelector("#showList");
+
     list.appendChild(DIV);
+    console.log(list.innerHTML);
 
+    SaveData();
 
+    console.log(list);
     ReceName.value = "";
     ReceText.value = "";
     uploadImg.value = "";
+
+    SaveData();
+
   } else {
     alert("Please Fill Out This Field.");
   }
   Num++;
+
 });
 
-console.log(list);
+
+document.querySelector('#loaderbtn').addEventListener('click', () => {
+  function ShowList() {
+    list.innerHTML = localStorage.getItem('data');
+  }
+  ShowList();
+})
+
+
+
+// make a local storage  on your browser to save data
+// function SaveData() {
+//   localStorage.setItem("data", list.innerHTML);
+// }
+// function ShowList() {
+//   list.innerHTML = localStorage.getItem('data');
+// }
+// ShowList();
 
 
 
